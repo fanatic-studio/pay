@@ -1,0 +1,6 @@
+{
+	"desc": "第三方支付模块（支付宝、微信支付）。",
+	"requireFormatName": "vdPay",
+	"requireName": "vd/pay",
+	"title": "支付模块"
+}
