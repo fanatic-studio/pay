@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                     vd plugin.
                    DESC
 
-  s.homepage     = "https://vd.app"
+  s.homepage     = "https://vd.io"
   s.license      = "MIT"
   s.author             = { "ViewDesign" => "viewdesign@gmail.com" }
   s.source =  { :path => '.' }
