@@ -1,4 +1,4 @@
-package app.vd.pay.library.alipay;vdvd
+package app.vd.pay.library.alipay;
 
 import java.util.Map;
 
