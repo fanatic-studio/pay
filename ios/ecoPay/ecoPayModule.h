@@ -2,7 +2,7 @@
 #import <Foundation/Foundation.h>
 #import "WeexSDK.h"
 
-@interface vdPayModule : NSObject <WXModuleProtocol>
+@interface ecoPayModule : NSObject <WXModuleProtocol>
 
 + (void)alipayHandleOpenURL:(NSURL *) url;
 + (BOOL)weixinHandleOpenURL:(NSURL *) url;

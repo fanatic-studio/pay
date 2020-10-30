@@ -1,4 +1,4 @@
-package app.vd.pay.ui.entry;
+package app.eco.pay.ui.entry;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -22,17 +22,17 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.vd.framework.extend.annotation.ModuleEntry;
-import app.vd.framework.extend.bean.WebCallBean;
-import app.vd.framework.extend.module.vdCommon;
-import app.vd.framework.extend.module.vdJson;
-import app.vd.pay.library.alipay.PayResult;
-import app.vd.pay.library.weixin.PayStatic;
-import app.vd.pay.ui.module.WebModule;
-import app.vd.pay.ui.module.WeexModule;
+import app.eco.framework.extend.annotation.ModuleEntry;
+import app.eco.framework.extend.bean.WebCallBean;
+import app.eco.framework.extend.module.ecoCommon;
+import app.eco.framework.extend.module.ecoJson;
+import app.eco.pay.library.alipay.PayResult;
+import app.eco.pay.library.weixin.PayStatic;
+import app.eco.pay.ui.module.WebModule;
+import app.eco.pay.ui.module.WeexModule;
 
 @ModuleEntry
-public class vd_pay {
+public class eco_pay {
 
     /**
      * ModuleEntry
@@ -40,11 +40,11 @@ public class vd_pay {
      */
     public void init(Context content) {
         try {
-            WXSDKEngine.registerModule("vdPay", WeexModule.class);
+            WXSDKEngine.registerModule("ecoPay", WeexModule.class);
         } catch (WXException e) {
             e.printStackTrace();
         }
-        WebCallBean.addClassData("vdPay", WebModule.class);
+        WebCallBean.addClassData("ecoPay", WebModule.class);
     }
 
     /****************************************************************************************/
@@ -114,19 +114,19 @@ public class vd_pay {
      * @param callback
      */
     public void weixin(Context context, String payData, JSCallback callback) {
-        PayStatic.payParamets = vdJson.parseObject(payData);
+        PayStatic.payParamets = ecoJson.parseObject(payData);
         PayStatic.payCallback = callback;
         PayReq request = new PayReq();
-        request.appId = vdJson.getString(PayStatic.payParamets, "appid");
-        request.partnerId = vdJson.getString(PayStatic.payParamets, "partnerid");
-        request.prepayId = vdJson.getString(PayStatic.payParamets, "prepayid");
-        request.packageValue = vdJson.getString(PayStatic.payParamets, "package");
-        request.nonceStr = vdJson.getString(PayStatic.payParamets, "noncestr");
-        request.timeStamp = vdJson.getString(PayStatic.payParamets, "timestamp");
-        request.sign = vdJson.getString(PayStatic.payParamets, "sign");
+        request.appId = ecoJson.getString(PayStatic.payParamets, "appid");
+        request.partnerId = ecoJson.getString(PayStatic.payParamets, "partnerid");
+        request.prepayId = ecoJson.getString(PayStatic.payParamets, "prepayid");
+        request.packageValue = ecoJson.getString(PayStatic.payParamets, "package");
+        request.nonceStr = ecoJson.getString(PayStatic.payParamets, "noncestr");
+        request.timeStamp = ecoJson.getString(PayStatic.payParamets, "timestamp");
+        request.sign = ecoJson.getString(PayStatic.payParamets, "sign");
         //
         IWXAPI api = WXAPIFactory.createWXAPI(context, null);
-        api.registerApp(vdJson.getString(PayStatic.payParamets, "appid"));
+        api.registerApp(ecoJson.getString(PayStatic.payParamets, "appid"));
         if (!api.sendReq(request)) {
             if (PayStatic.payCallback != null) {
                 Map<String, Object> data = new HashMap<>();
@@ -147,7 +147,7 @@ public class vd_pay {
     @JSMethod
     public void alipay(final Context context, String payData, JSCallback callback) {
         final String orderInfo = payData;
-        final String msgName = "JSCallback_" + vdCommon.randomString(6);
+        final String msgName = "JSCallback_" + ecoCommon.randomString(6);
         msgJSCallback.put(msgName, callback);
         Runnable payRunnable = new Runnable() {
 

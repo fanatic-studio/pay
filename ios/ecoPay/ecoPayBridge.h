@@ -1,6 +1,6 @@
 //
-//  vdPayBridge.h
-//  vdApp
+//  ecoPayBridge.h
+//  ecoApp
 //
 //  Created by 高一 on 2019/1/6.
 //
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface vdPayBridge : NSObject
+@interface ecoPayBridge : NSObject
 
 @end
 

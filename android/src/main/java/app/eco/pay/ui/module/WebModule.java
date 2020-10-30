@@ -1,17 +1,17 @@
-package app.vd.pay.ui.module;
+package app.eco.pay.ui.module;
 
-import app.vd.framework.extend.view.ExtendWebView;
-import app.vd.framework.extend.view.webviewBridge.JsCallback;
-import app.vd.framework.ui.vd;
-import app.vd.pay.ui.entry.vd_pay;
+import app.eco.framework.extend.view.ExtendWebView;
+import app.eco.framework.extend.view.webviewBridge.JsCallback;
+import app.eco.framework.ui.eco;
+import app.eco.pay.ui.entry.eco_pay;
 
 public class WebModule {
 
-    private static vd_pay __obj;
+    private static eco_pay __obj;
 
-    private static vd_pay myApp() {
+    private static eco_pay myApp() {
         if (__obj == null) {
-            __obj = new vd_pay();
+            __obj = new eco_pay();
         }
         return __obj;
     }
@@ -27,7 +27,7 @@ public class WebModule {
      * @param callback
      */
     public static void weixin(ExtendWebView webView, String payData, JsCallback callback) {
-        myApp().weixin(webView.getContext(), payData, vd.MCallback(callback));
+        myApp().weixin(webView.getContext(), payData, eco.MCallback(callback));
     }
 
     /**
@@ -37,7 +37,7 @@ public class WebModule {
      * @param callback
      */
     public static void alipay(ExtendWebView webView, String payData, JsCallback callback) {
-        myApp().alipay(webView.getContext(), payData, vd.MCallback(callback));
+        myApp().alipay(webView.getContext(), payData, eco.MCallback(callback));
     }
 
 }

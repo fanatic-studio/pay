@@ -1,25 +1,25 @@
 //
-//  vdPayBridge.m
-//  vdApp
+//  ecoPayBridge.m
+//  ecoApp
 //
 //  Created by 高一 on 2019/1/6.
 //
 
-#import "vdPayBridge.h"
-#import "vdPayModule.h"
+#import "ecoPayBridge.h"
+#import "ecoPayModule.h"
 
-@interface vdPayBridge ()
+@interface ecoPayBridge ()
 
-@property (nonatomic, strong) vdPayModule *pay;
+@property (nonatomic, strong) ecoPayModule *pay;
 
 @end
 
-@implementation vdPayBridge
+@implementation ecoPayBridge
 
 - (void)initialize
 {
     if (self.pay == nil) {
-        self.pay = [[vdPayModule alloc] init];
+        self.pay = [[ecoPayModule alloc] init];
     }
 }
 

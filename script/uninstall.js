@@ -7,7 +7,7 @@ const regFun = (str) => str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 let workPath = process.cwd();
 
 function __android() {
-    let androidPath = path.resolve(workPath, 'platforms/android/vdApp');
+    let androidPath = path.resolve(workPath, 'platforms/android/ecoApp');
 
     let pluginPath = path.resolve(__dirname, "../");
     let configFile = path.resolve(pluginPath, "config.json");

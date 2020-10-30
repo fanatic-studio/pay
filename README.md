@@ -3,24 +3,24 @@
 ## 安装
 
 ```shell script
-vd plugin install https://github.com/ivde/pay
+eco plugin install https://github.com/iecoe/pay
 ```
 
 ## 卸载
 
 ```shell script
-vd plugin uninstall https://github.com/ivde/pay
+eco plugin uninstall https://github.com/iecoe/pay
 ```
 
 ## 引用
 
 ```js
-const pay = app.requireModule("vd/pay");
+const pay = app.requireModule("eco/pay");
 ```
 
 ## 参数配置
 
-请查阅[配置相关](https://vd.app/guide/config.html)
+请查阅[配置相关](https://eco.app/guide/config.html)
 
 ## 微信支付
 
@@ -30,13 +30,13 @@ const pay = app.requireModule("vd/pay");
 
 在创建项目的时候**`默认已经配置好`**路径了，但是如果开发中修改过包名则需要确保以下路径名称与包名一致，否则用户付款完成后无法重新唤起APP。
 
-![](https://vd.app/assets/img/wxpay_android.79421638.png)
+![](https://eco.app/assets/img/wxpay_android.79421638.png)
 
 > `iOS`配置
 
-如果已经按上面[参数配置](https://vd.app/guide/config.html)配置好的话，在编译`npm run [serve|dev|build]`项目的时候**`系统已经自动生成`**理论上无需手动设置，但是真正打包项目的时候需要确认设置`Info`>`URL Types`，否则用户付款完成后无法重新唤起APP。
+如果已经按上面[参数配置](https://eco.app/guide/config.html)配置好的话，在编译`npm run [serve|dev|build]`项目的时候**`系统已经自动生成`**理论上无需手动设置，但是真正打包项目的时候需要确认设置`Info`>`URL Types`，否则用户付款完成后无法重新唤起APP。
 
-![](https://vd.app/assets/img/wxpay_ios.dd4e967a.png)
+![](https://eco.app/assets/img/wxpay_ios.dd4e967a.png)
 
 #### 调起支付
 

@@ -1,20 +1,20 @@
-package app.vd.pay.ui.module;
+package app.eco.pay.ui.module;
 
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
 import com.taobao.weex.common.WXModule;
 
-import app.vd.pay.ui.entry.vd_pay;
+import app.eco.pay.ui.entry.eco_pay;
 
 public class WeexModule extends WXModule {
 
-    private static final String TAG = "vdPayModule";
+    private static final String TAG = "ecoPayModule";
 
-    private vd_pay __obj;
+    private eco_pay __obj;
 
-    private vd_pay myApp() {
+    private eco_pay myApp() {
         if (__obj == null) {
-            __obj = new vd_pay();
+            __obj = new eco_pay();
         }
         return __obj;
     }

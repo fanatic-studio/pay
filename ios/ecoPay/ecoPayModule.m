@@ -1,5 +1,5 @@
 
-#import "vdPayModule.h"
+#import "ecoPayModule.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
@@ -7,9 +7,9 @@
 static WXModuleKeepAliveCallback alipayCallback;
 static WXModuleKeepAliveCallback weixinCallback;
 
-@implementation vdPayModule
+@implementation ecoPayModule
 
-WX_PlUGIN_EXPORT_MODULE(vdPay, vdPayModule)
+WX_PlUGIN_EXPORT_MODULE(ecoPay, ecoPayModule)
 WX_EXPORT_METHOD(@selector(weixin:callback:))
 WX_EXPORT_METHOD(@selector(alipay:callback:))
 WX_EXPORT_METHOD(@selector(union_weixin:))
@@ -18,13 +18,13 @@ WX_EXPORT_METHOD(@selector(union_alipay:))
 + (void)alipayHandleOpenURL:(NSURL *) url
 {
     [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-        [vdPayModule onAlipayResp:resultDic];
+        [ecoPayModule onAlipayResp:resultDic];
     }];
 }
 
 + (BOOL)weixinHandleOpenURL:(NSURL *) url
 {
-    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)[[vdPayModule alloc] init]];
+    return [WXApi handleOpenURL:url delegate:(id<WXApiDelegate>)[[ecoPayModule alloc] init]];
 }
 
 //支付宝结果回调
@@ -109,14 +109,14 @@ WX_EXPORT_METHOD(@selector(union_alipay:))
     NSString *fromScheme = @"";
     NSDictionary *infoDicNew = [NSBundle mainBundle].infoDictionary;
     for (NSDictionary *object in infoDicNew[@"CFBundleURLTypes"]) {
-        if ([object[@"CFBundleURLName"] isEqualToString:@"vdAppName"]) {
+        if ([object[@"CFBundleURLName"] isEqualToString:@"ecoAppName"]) {
             fromScheme = object[@"CFBundleURLSchemes"][0];
             break;
         }
     }
     alipayCallback = callback;
     [[AlipaySDK defaultService] payOrder:payData fromScheme:fromScheme callback:^(NSDictionary *resultDic) {
-        [vdPayModule onAlipayResp:resultDic];
+        [ecoPayModule onAlipayResp:resultDic];
     }];
 }
 

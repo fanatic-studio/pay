@@ -1,6 +1,6 @@
-package app.vd.xxx.wxapi;
+package app.eco.xxx.wxapi;
 
-import app.vd.pay.ui.module.WXPayEntry;
+import app.eco.pay.ui.module.WXPayEntry;
 
 public class WXPayEntryActivity extends WXPayEntry {
 

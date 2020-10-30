@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion project.appMinSdkVersion
         targetSdkVersion project.targetSdkVersion
-        versionCode project.vdVersionCode
-        versionName project.vdVersionName
+        versionCode project.ecoVersionCode
+        versionName project.ecoVersionName
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -51,7 +51,7 @@ dependencies {
     compileOnly "com.taobao.android:weexplugin-processor:${project.weex_processorVersion}"
     compileOnly "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.6"
     //
-    compileOnly project(':vd')
+    compileOnly project(':eco')
 }
 
 

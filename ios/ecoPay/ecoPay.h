@@ -1,5 +1,5 @@
 //
-//  vdPay.h
+//  ecoPay.h
 //  Pods
 //
 //  Created by 高一 on 2019/3/2.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface vdPay : NSObject
+@interface ecoPay : NSObject
 
 + (instancetype)sharedManager;
 

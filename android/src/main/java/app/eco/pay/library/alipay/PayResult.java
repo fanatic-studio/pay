@@ -1,11 +1,11 @@
-package app.vd.pay.library.alipay;
+package app.eco.pay.library.alipay;
 
 import java.util.Map;
 
 import android.text.TextUtils;
 
-import app.vd.framework.extend.module.vdJson;
-import app.vd.framework.extend.module.vdParse;
+import app.eco.framework.extend.module.ecoJson;
+import app.eco.framework.extend.module.ecoParse;
 
 public class PayResult {
     private String resultStatus;
@@ -20,13 +20,13 @@ public class PayResult {
 
         for (String key : rawResult.keySet()) {
             if (TextUtils.equals(key, "resultStatus")) {
-                resultStatus = vdParse.parseStr(rawResult.get(key));
+                resultStatus = ecoParse.parseStr(rawResult.get(key));
             } else if (TextUtils.equals(key, "result")) {
-                result = vdJson.parseObject(rawResult.get(key));
+                result = ecoJson.parseObject(rawResult.get(key));
             } else if (TextUtils.equals(key, "memo")) {
-                memo = vdParse.parseStr(rawResult.get(key));
+                memo = ecoParse.parseStr(rawResult.get(key));
             } else if (TextUtils.equals(key, "msgName")) {
-                msgName = vdParse.parseStr(rawResult.get(key));
+                msgName = ecoParse.parseStr(rawResult.get(key));
             }
         }
     }

@@ -7,7 +7,7 @@ const utils = require('./utils');
 let workPath = process.cwd();
 
 function __android() {
-    let androidPath = path.resolve(workPath, 'platforms/android/vdApp');
+    let androidPath = path.resolve(workPath, 'platforms/android/ecoApp');
     let gradPath = path.resolve(androidPath, 'build.gradle');
     //
     let packageName = "";
@@ -23,7 +23,7 @@ function __android() {
     let from = path.resolve(pluginPath, 'script/wxapi/WXPayEntryActivity.java');
     let to = path.resolve(pluginPath, 'android/src/main/java', packageName.replace(/\./g, '/'), 'wxapi');
     utils.mkdirsSync(to);
-    utils.changeFileTo(from, path.resolve(to, 'WXPayEntryActivity.java'), 'app.vd.xxx', packageName);
+    utils.changeFileTo(from, path.resolve(to, 'WXPayEntryActivity.java'), 'app.eco.xxx', packageName);
     if (pluginName) {
         let appGradpath = path.resolve(androidPath, 'app/build.gradle');
         let appResult = fs.readFileSync(appGradpath, 'utf8');
@@ -39,8 +39,8 @@ function __android() {
 }
 
 function __ios() {
-    let plistFile = path.join(workPath, 'platforms/ios/vdApp/vdApp/Info.plist');
-    let configFile = path.join(workPath, 'vd.config.js');
+    let plistFile = path.join(workPath, 'platforms/ios/ecoApp/ecoApp/Info.plist');
+    let configFile = path.join(workPath, 'eco.config.js');
     if (!fs.existsSync(plistFile) || !fs.existsSync(configFile)) {
         return;
     }
@@ -50,7 +50,7 @@ function __ios() {
     let infoObject = plist.parse(infoContent);
     let infoIn = false;
     infoObject['CFBundleURLTypes'].some((item) => {
-        if (item['CFBundleURLName'] == "vdAppWxappid") {
+        if (item['CFBundleURLName'] == "ecoAppWxappid") {
             item['CFBundleURLSchemes'] = [ configAppid ];
             return infoIn = true;
         }
@@ -58,7 +58,7 @@ function __ios() {
     if (!infoIn) {
         infoObject['CFBundleURLTypes'].push({
             "CFBundleTypeRole": "Editor",
-            "CFBundleURLName": "vdAppWxappid",
+            "CFBundleURLName": "ecoAppWxappid",
             "CFBundleURLSchemes": [ configAppid ]
         });
     }

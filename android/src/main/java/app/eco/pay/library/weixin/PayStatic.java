@@ -1,4 +1,4 @@
-package app.vd.pay.library.weixin;
+package app.eco.pay.library.weixin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.taobao.weex.bridge.JSCallback;

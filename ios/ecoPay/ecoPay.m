@@ -1,23 +1,23 @@
 //
-//  vdPay.m
+//  ecoPay.m
 //  Pods
 //
 //  Created by 高一 on 2019/3/2.
 //
 
-#import "vdPay.h"
-#import "vdPayModule.h"
-#import "vdPayBridge.h"
+#import "ecoPay.h"
+#import "ecoPayModule.h"
+#import "ecoPayBridge.h"
 #import "WeexInitManager.h"
 
-WEEX_PLUGIN_INIT(vdPay)
-@implementation vdPay
+WEEX_PLUGIN_INIT(ecoPay)
+@implementation ecoPay
 
 + (instancetype) sharedManager {
     static dispatch_once_t onceToken;
-    static vdPay *instance;
+    static ecoPay *instance;
     dispatch_once(&onceToken, ^{
-        instance = [[vdPay alloc] init];
+        instance = [[ecoPay alloc] init];
     });
     return instance;
 }
@@ -26,16 +26,16 @@ WEEX_PLUGIN_INIT(vdPay)
 {
     if ([url.host isEqualToString:@"safepay"]) {
         // 支付宝处理支付结果
-        [vdPayModule alipayHandleOpenURL:url];
+        [ecoPayModule alipayHandleOpenURL:url];
     }else if ([url.host isEqualToString:@"pay"]) {
         // 微信支付处理支付结果
-        [vdPayModule weixinHandleOpenURL:url];
+        [ecoPayModule weixinHandleOpenURL:url];
     }
 }
 
 - (void) setJSCallModule:(JSCallCommon *)callCommon webView:(WKWebView*)webView
 {
-    [callCommon setJSCallAssign:webView name:@"vdPay" bridge:[[vdPayBridge alloc] init]];
+    [callCommon setJSCallAssign:webView name:@"ecoPay" bridge:[[ecoPayBridge alloc] init]];
 }
 
 @end

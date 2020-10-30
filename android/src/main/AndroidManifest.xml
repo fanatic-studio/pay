@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="app.vd.pay">
+    package="app.eco.pay">
 
     <supports-screens
         android:anyDensity="true"
@@ -30,7 +30,7 @@
             android:required="false"/>
 
         <activity
-            android:name="app.vd.playground.wxapi.WXPayEntryActivity"
+            android:name="app.eco.playground.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/transparentThemePay"
