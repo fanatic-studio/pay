@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
                     eco plugin.
                    DESC
 
-  s.homepage     = "https://eco.io"
+  s.homepage     = "https://eco.app"
   s.license      = "MIT"
-  s.author             = { "kjeco" => "kjeco@kjeco.com" }
+  s.author             = { "kjeco" => "kjeco@kjeco.cn" }
   s.source =  { :path => '.' }
   s.source_files  = "ecoPay", "**/**/*.{h,m,mm,c}"
   s.exclude_files = "Source/Exclude"

@@ -1,5 +1,6 @@
 
 #import "ecoPayModule.h"
+#import "Config.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
@@ -12,8 +13,6 @@ static WXModuleKeepAliveCallback weixinCallback;
 WX_PlUGIN_EXPORT_MODULE(ecoPay, ecoPayModule)
 WX_EXPORT_METHOD(@selector(weixin:callback:))
 WX_EXPORT_METHOD(@selector(alipay:callback:))
-WX_EXPORT_METHOD(@selector(union_weixin:))
-WX_EXPORT_METHOD(@selector(union_alipay:))
 
 + (void)alipayHandleOpenURL:(NSURL *) url
 {
@@ -81,7 +80,9 @@ WX_EXPORT_METHOD(@selector(union_alipay:))
         dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
     }
     if (!err && dic[@"appid"]) {
-        [WXApi registerApp:dic[@"appid"]];
+        NSMutableDictionary *wxpay = [Config getObject:@"wxpay"];
+        NSString *universalLink = [NSString stringWithFormat:@"%@", wxpay[@"universalLink"]];
+        [WXApi registerApp:dic[@"appid"] universalLink:universalLink];
     }else{
         weixinCallback(@{@"status":@(-999), @"msg":@"注册微信支付失败"}, NO);
         return;
@@ -95,12 +96,12 @@ WX_EXPORT_METHOD(@selector(union_alipay:))
     req.nonceStr = [WXConvert NSString:dic[@"noncestr"]];
     req.timeStamp = [dic[@"timestamp"] intValue];
     req.sign = [WXConvert NSString:dic[@"sign"]];
-    if (![WXApi sendReq:req]) {
-        if (weixinCallback != nil) {
+    [WXApi sendReq:req completion:^(BOOL success) {
+        if (!success && weixinCallback != nil) {
             weixinCallback(@{@"status":@(-999), @"msg":@"启动微信支付失败"}, NO);
             weixinCallback = nil;
         }
-    }
+    }];
 }
 
 //官方支付宝支付

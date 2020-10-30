@@ -62,6 +62,15 @@ function __ios() {
             "CFBundleURLSchemes": [ configAppid ]
         });
     }
+    let schemes = [
+        "weixin",
+        "weixinULAPI"
+    ];
+    schemes.forEach((item) => {
+        if (infoObject['LSApplicationQueriesSchemes'].indexOf(item) === -1) {
+            infoObject['LSApplicationQueriesSchemes'].push(item);
+        }
+    });
     fs.writeFileSync(plistFile, plist.build(infoObject), 'utf8');
 }
 

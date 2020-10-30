@@ -7,9 +7,6 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.alipay.sdk.app.PayTask;
-import com.chinaums.pppay.unify.UnifyPayListener;
-import com.chinaums.pppay.unify.UnifyPayPlugin;
-import com.chinaums.pppay.unify.UnifyPayRequest;
 import com.taobao.weex.WXSDKEngine;
 import com.taobao.weex.annotation.JSMethod;
 import com.taobao.weex.bridge.JSCallback;
