@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://vd.io"
   s.license      = "MIT"
-  s.author             = { "ViewDesign" => "viewdesign@gmail.com" }
+  s.author             = { "kjeco" => "kjeco@kjeco.com" }
   s.source =  { :path => '.' }
   s.source_files  = "vdPay", "**/**/*.{h,m,mm,c}"
   s.exclude_files = "Source/Exclude"
